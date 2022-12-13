@@ -41,3 +41,37 @@
 	console.log(users.sort(byField('name')));
 	console.log(users.sort(byField('age')));
 }
+
+{
+	function infiniteLoop(arr, d, n) {
+		let num;
+		if (d === 'left') {
+			for (let j = 0; j < n; j++) {
+				for (let i = 0; i < arr.length; i++) {
+					if (i === 0) {
+						num = arr[i].shift();
+						arr[arr.length - 1].push(num);
+					} else {
+						num = arr[i].shift();
+						arr[i - 1].push(num);
+					}
+				}
+			}
+		}
+
+		if (d === 'right') {
+			for (let j = 0; j < n; j++) {
+				for (let i = arr.length - 1; i >= 0; i--) {
+					if (i === arr.length - 1) {
+						num = arr[i].pop();
+						arr[0].unshift(num);
+					} else {
+						num = arr[i].pop();
+						arr[i + 1].unshift(num);
+					}
+				}
+			}
+		}
+		return arr;
+	}
+}
