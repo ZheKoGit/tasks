@@ -74,4 +74,5 @@
 		}
 		return arr;
 	}
+	console.log(infiniteLoop( [[2,0,8,7],[5,9,0,2,1,0],[9,7,5,7]],"left",8))
 }
