@@ -126,3 +126,21 @@
 		setTimeout(func, 1000, 1, 5);
 	}, 1000)
 }
+
+{
+	function threeInOne(arr) {
+		let arrNew = [];
+		let a = 0;
+		let b = 3;
+
+		for (let i = 0; i < arr.length / 3; i++) {
+			arrNew.push(arr.slice(a, b));
+			let sum = arrNew[i].reduce((prev, item) => prev + item, 0);
+			arrNew.splice(i, 1, sum);
+			a = b;
+			b = a + 3;
+		}
+
+		return arrNew;
+	}
+}
