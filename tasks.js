@@ -78,5 +78,51 @@
 }
 
 {
+	function makeCounter() {
+		let count = 0;
 
+		function counter() {
+			return count++;
+		}
+
+		counter.set = function (value) {
+			return count = value;
+		}
+
+		counter.decrease = function () {
+			return count--;
+		}
+
+		return counter;
+	}
+
+	let counter = makeCounter();
+
+	alert(counter()); // 0
+	alert(counter()); // 1
+
+	counter.set(10); // установить новое значение счётчика
+
+	alert(counter()); // 10
+
+	counter.decrease(); // уменьшить значение счётчика на 1
+
+	alert(counter()); // 10 (вместо 11)
+}
+
+{
+	let num = 0;
+	function printNumbers(from, to) {
+		if (num === 0) num = from;
+		if (num <= to) {
+			console.log(num);
+			num++;
+		}
+	}
+
+	setInterval(printNumbers, 1000, 1, 5)
+	setTimeout(function func() {
+		printNumbers(1, 5);
+		setTimeout(func, 1000, 1, 5);
+	}, 1000)
 }
