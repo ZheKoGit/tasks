@@ -148,5 +148,48 @@
 }
 
 {
+	function work(a, b) {
+		alert(a + b);
+	}
 
+	function spy(func) {
+
+		function f() {
+			f.calls.push([...arguments]);
+			return func.apply(this, arguments);
+		}
+		f.calls = [];
+		return f;
+	}
+
+	work = spy(work);
+
+	work(1, 2); // 3
+	work(4, 5); // 9
+
+	for (let args of work.calls) {
+		alert('call:' + args.join()); // "call:1,2", "call:4,5"
+	}
+}
+
+{
+	function f(x) {
+		alert(x);
+	}
+
+	//
+	function delay(f, ms) {
+		return function func(...args) {
+
+			setTimeout(function () {
+				f.apply(this, args);
+			}, ms)
+		}
+	}
+
+	let f1000 = delay(alert, 1000);
+	let f1500 = delay(f, 10500);
+
+	f1000("test"); // показывает "test" после 1000 мс
+	f1500("test"); // показывает "test" после 1500 мс
 }
