@@ -177,7 +177,7 @@
 		alert(x);
 	}
 
-	// my code
+	//
 	function delay(f, ms) {
 		return function func(...args) {
 
@@ -187,28 +187,9 @@
 		}
 	}
 
-	let f1000 = delay(f, 1000);
+	let f1000 = delay(alert, 1000);
 	let f1500 = delay(f, 10500);
 
 	f1000("test"); // показывает "test" после 1000 мс
 	f1500("test"); // показывает "test" после 1500 мс
-}
-
-{
-	function sortIt(arr) {
-		let obj = {}
-		for (let i = 0; i < arr.length; i++) {
-
-			if (obj[arr[i]] === undefined) obj[arr[i]] = 0;
-			obj[arr[i]]++;
-		}
-
-		let newArr = arr.slice();
-		return newArr.sort(function (a, b) {
-
-			if (obj[a] === obj[b]) return b - a;
-
-			return (obj[a] > obj[b]) ? 1 : -1;
-		});
-	}
 }
