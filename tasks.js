@@ -226,4 +226,6 @@
 				e.slice(0, divider) + '|' + e.slice(divider);
 		})
 	}
+
+	isolateIt(["abcdhj", "efghk"]);
 }
