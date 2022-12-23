@@ -211,4 +211,19 @@
 			return (obj[a] > obj[b]) ? 1 : -1;
 		});
 	}
+
+	sortIt([1, 3, 3, 5, 2, 2, 4, 6, 6, 7, 7, 7]);
+}
+
+{
+	function isolateIt(arr) {
+
+		return arr.map(function (e) {
+			let divider = e.length / 2;
+
+			return (e.length % 2) ?
+				e.slice(0, Math.floor(divider)) + '|' + e.slice(Math.ceil(divider)) :
+				e.slice(0, divider) + '|' + e.slice(divider);
+		})
+	}
 }
