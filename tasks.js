@@ -229,3 +229,24 @@
 
 	isolateIt(["abcdhj", "efghk"]);
 }
+
+{
+	function mirrorImage(arr) {
+		let a, b;
+
+		let isTrue = arr.some((elem, i) => {
+			a = arr[i];
+			b = String(arr[i + 1]).split('');
+
+			let arrNum = [];
+			for (let i = b.length - 1; i >= 0; i--) {
+				arrNum.push(b[i]);
+			}
+
+			return a === +arrNum.join('');
+		})
+
+		if (isTrue) return [a, +b.join('')];
+		return [-1, -1];
+	}
+}
