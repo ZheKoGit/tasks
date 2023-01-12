@@ -311,3 +311,66 @@
 		ball.style.top = yBall + 'px';
 	}
 }
+
+{
+	/*
+	---HTML---
+	<div class='select-wrapp'>
+  <div class='select'>
+  <div class='arrows-wrapp'><div class='arrows'>▶ ▼</div></div> Сладости (нажми меня)!</div>
+  <ul class='list'>
+	 <li>Пирожное</li>
+	 <li>Пончик</li>
+	 <li>Мёд</li>
+  </ul>
+</div>
+	*/
+
+	/*
+	---CSS---
+	.select {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  cursor: pointer;
+}
+
+.arrows-wrapp {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: green;
+}
+
+.arrows {
+  position: absolute;
+  top: -6px;
+  left: 1px;
+}
+
+.list {
+  display: none;
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+	*/
+	const selectWrapp = document.querySelector('.select-wrapp');
+	const select = selectWrapp.querySelector('.select');
+
+	select.addEventListener('click', () => {
+		const arrows = selectWrapp.querySelector('.arrows');
+		const list = selectWrapp.querySelector('.list');
+		if (list.style.display === 'none' || list.style.display === '') {
+			arrows.style.left = -17 + 'px';
+			list.style.display = 'block';
+		} else {
+			arrows.style.left = 1 + 'px';
+			list.style.display = 'none';
+		}
+	})
+}
