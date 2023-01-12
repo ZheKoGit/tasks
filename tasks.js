@@ -254,6 +254,16 @@
 
 {
 	/*
+	---HTML---
+	<br> Мяч не должен выходить за границы поля.
+
+	<div id="field">
+	  <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+			. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+	</div>
+	*/
+
+	/*
 	---CSS---
 	body {
 		height: 2000px;
@@ -276,12 +286,28 @@
 }
 	*/
 
-	/*
-	<br> Мяч не должен выходить за границы поля.
+	const field = document.querySelector('#field');
+	const ball = field.querySelector('#ball');
 
-	<div id="field">
-	  <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-			. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-	</div>
-	*/
+	field.addEventListener('click', (e) => {
+		let x = e.x - field.offsetLeft - field.clientLeft + window.pageXOffset;
+		let y = e.y - field.offsetTop - field.clientTop + window.pageYOffset;
+		setCoordBall(x, y)
+	})
+
+	function setCoordBall(x, y) {
+		let xCentrBell = ball.offsetWidth / 2;
+		let yCentrBell = ball.offsetHeight / 2;
+
+		let xBall = x - xCentrBell;
+		let yBall = y - yCentrBell;
+
+		if (x < xCentrBell) xBall = 0;
+		if (x > field.clientWidth - xCentrBell) xBall = field.clientWidth - xCentrBell * 2;
+		if (y < yCentrBell) yBall = 0;
+		if (y > field.clientHeight - yCentrBell) yBall = field.clientHeight - yCentrBell * 2;
+
+		ball.style.left = xBall + 'px';
+		ball.style.top = yBall + 'px';
+	}
 }
