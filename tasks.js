@@ -249,4 +249,39 @@
 		if (isTrue) return [a, +b.join('')];
 		return [-1, -1];
 	}
+	mirrorImage([454, 86, 57, 75, 16, 88]);
+}
+
+{
+	/*
+	---CSS---
+	body {
+		height: 2000px;
+}
+
+	#field {
+		position: relative;
+			 width: 200px;
+		height: 150px;
+		border: 10px solid black;
+		background-color: #00FF00;
+		overflow: hidden;
+	}
+
+	#ball {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		transition: all 1s;
+}
+	*/
+
+	/*
+	<br> Мяч не должен выходить за границы поля.
+
+	<div id="field">
+	  <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+			. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+	</div>
+	*/
 }
