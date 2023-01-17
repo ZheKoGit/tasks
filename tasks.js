@@ -447,3 +447,142 @@ p {
 		elem.remove();
 	}
 }
+
+{
+	/*
+	<div class='slider'>
+  <div class='button-wrap'>
+<button class="arrow arrow_prev">⇦</button>
+  <button class="arrow arrow_next">⇨</button>
+</div>
+
+  <div class='list-wrap'>
+	 <div class='list-inner'>
+  <ul class='list'>
+	 <li><img src="https://ru.js.cx/carousel/1.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/2.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/3.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/4.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/5.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/6.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/7.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/8.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/9.png"></li>
+	 <li><img src="https://ru.js.cx/carousel/10.png"></li>
+  </ul>
+  </div>
+</div>
+  </div>
+	*/
+
+	/*
+	* {
+  box-sizing: border-box;
+}
+
+.slider {
+  position: relative;
+  max-width: 480px;
+  padding: 10px 30px;
+	 background-color: grey;
+  
+}
+
+.button-wrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.arrow {
+  padding: 0;
+  background: #ddd;
+  border-radius: 15px;
+  border: 1px solid gray;
+  font-size: 24px;
+  line-height: 24px;
+  color: #444;
+  display: block;
+}
+
+.arrow:focus {
+  outline: none;
+}
+
+.arrow:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+.list-wrap {
+ 
+}
+
+.list-inner {
+	 position: relative;
+  height: 120px;
+	 overflow: hidden;
+}
+
+.list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 10px;
+  transition: all .5s ease-in;
+}
+
+ul img {
+  width: 130px;
+  height: 130px;
+  display: block; // убираем пустое место вокруг картинок
+}
+
+ul li {
+  display: inline-block; // убираем пустое место между элементами списка 
+}
+	*/
+
+	/*  let i = 1;
+	 for(let li of document.querySelectorAll('li')) {
+		li.style.position = 'relative';
+		li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+		i++;
+	 } */
+
+	const slider = document.querySelector('.slider');
+	const list = slider.querySelector('.list');
+	const liAll = slider.querySelectorAll('li');
+	const arrowPrev = slider.querySelector('.arrow_prev');
+	const arrowNext = slider.querySelector('.arrow_next');
+	let position = 0;
+	let stepSize = 130 * 3;
+	let sliderSize = liAll.length * 130;
+
+	arrowNext.onclick = () => {
+		position -= stepSize;
+		// position = Math.max(position, -sliderSize + stepSize);
+		if (position < -sliderSize + stepSize) position = -sliderSize + stepSize;
+		list.style.left = position + 'px';
+	}
+
+	arrowPrev.onclick = () => {
+		position += stepSize;
+		// position = Math.min(position, 0)
+		if (position >= 0) position = 0;
+		list.style.left = position + 'px';
+	}
+
+	console.log(list.style.left);
+}
